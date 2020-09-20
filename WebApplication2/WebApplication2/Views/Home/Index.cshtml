@@ -114,9 +114,8 @@
             @Html.DisplayFor(modelItem => item.PhotoPath)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeID })
+            @Html.ActionLink("修改", "Edit", new { _id=item.EmployeeID }) |
+            @Html.ActionLink("刪除", "Delete", new { _id=item.EmployeeID })
         </td>
     </tr>
 }

@@ -33,8 +33,10 @@ namespace WebApplication2.Models
         [StringLength(25)]
         public string TitleOfCourtesy { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? BirthDate { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime? HireDate { get; set; }
 
         [StringLength(60)]
@@ -61,7 +63,7 @@ namespace WebApplication2.Models
         [Column(TypeName = "image")]
         public byte[] Photo { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
 
         public int? ReportsTo { get; set; }
