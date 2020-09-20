@@ -36,9 +36,11 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Employees _employee)
         {
-            _db.Employees.Add(_employee);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+
+                _db.Employees.Add(_employee);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+
         }
 
         public ActionResult Edit(int? _id)
