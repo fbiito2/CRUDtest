@@ -84,6 +84,7 @@
             @Html.LabelFor(model => model.Region, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Region, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Region, new { htmlAttributes = new { @class = "form-control",maxlength=11 } })  前面也擋*@
                 @Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger" })
             </div>
         </div>

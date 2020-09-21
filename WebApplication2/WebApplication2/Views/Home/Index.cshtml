@@ -10,6 +10,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <p>
+                FirstName:
+            </p>
+            @Html.TextBox("searchName", null, htmlAttributes: new { @class = "form-control col-md-2" })
+            <input type="submit" class="btn" value="查詢" />
+        </div>
+    }
+</div>
 <table class="table">
     <tr>
         <th>
@@ -52,9 +64,6 @@
             @Html.DisplayNameFor(model => model.Extension)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ReportsTo)
         </th>
         <th>
@@ -63,61 +72,68 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HireDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Region)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HomePhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Extension)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReportsTo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoPath)
-        </td>
-        <td>
-            @Html.ActionLink("修改", "Edit", new { _id=item.EmployeeID }) |
-            @Html.ActionLink("刪除", "Delete", new { _id=item.EmployeeID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleOfCourtesy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportsTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoPath)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { _id = item.EmployeeID }) |
+                @Html.ActionLink("刪除", "Delete", new { _id = item.EmployeeID })
+            </td>
+        </tr>
+    }
+
+    <div>
+        @Html.ActionLink("最前一頁", "Index", new { pageNumber = ViewBag.firstPage }, new { @class = "btn btn-default" })
+        @Html.ActionLink("上一頁", "Index", new { pageNumber = -1, page = ViewBag.nowPage })
+        @Html.ActionLink("下一頁", "Index", new { pageNumber = -2, page = ViewBag.nowPage })
+        @Html.ActionLink("最後一頁", "Index", new { pageNumber = ViewBag.lastPage }, new { @class = "btn btn-default" })
+
+        @(ViewBag.nowPage ) / @(ViewBag.lastPage)
+    </div>
 
 </table>

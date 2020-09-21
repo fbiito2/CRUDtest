@@ -20,10 +20,49 @@ namespace WebApplication2.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult Index()
+        public ActionResult Index(string searchName, int pageNumber = 1, int page = 1)
         {
+            int nowPage = page;
+            var a = (from s in _db.Employees
+                     select s);
+
+            int pageCount = (int)Math.Ceiling((a.Count() / 2d));
+
+            ViewBag.firstPage = 1;
+            ViewBag.lastPage = pageCount;
+
+            if (pageNumber == -2)
+            {
+                nowPage = nowPage + 1;
+            }
+            else if (pageNumber == -1)
+            {
+                nowPage = nowPage - 1;
+            }else if (pageNumber== pageCount)
+            {
+                nowPage = pageCount;
+            }
+
+            if (nowPage > pageCount)
+            {
+                page = pageCount;
+                nowPage = pageCount;
+            }else if (nowPage<1)
+            {
+                page = 1;
+                nowPage = 1;
+            }
+
+            ViewBag.nowPage = nowPage;
+
             employeeUtility utility = new employeeUtility();
-            object employeeList = utility.GetEmployeesList();
+            var employeeList = utility.GetEmployeesList(nowPage);
+
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                employeeList = _db.Employees.Where(t => t.FirstName.Contains(searchName)).ToList();
+            }
+
             return View(employeeList);
         }
 
@@ -37,9 +76,9 @@ namespace WebApplication2.Controllers
         public ActionResult Create(Employees _employee)
         {
 
-                _db.Employees.Add(_employee);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+            _db.Employees.Add(_employee);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
 

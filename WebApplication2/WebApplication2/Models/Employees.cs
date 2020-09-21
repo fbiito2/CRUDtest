@@ -46,7 +46,8 @@ namespace WebApplication2.Models
         [StringLength(15)]
         public string City { get; set; }
 
-        [StringLength(15)]
+        [StringLength(10)]
+        [Required]
         public string Region { get; set; }
 
         [StringLength(10)]

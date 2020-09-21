@@ -172,3 +172,4 @@ C:\GitUse\git-practice\WebApplication2\WebApplication2\obj\Debug\WebApplication2
 C:\GitUse\git-practice\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csproj.CopyComplete
 C:\GitUse\git-practice\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 C:\GitUse\git-practice\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
+C:\GitUse\git-practice\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojAssemblyReference.cache
